@@ -1,0 +1,69 @@
+/* Sidebar container */
+.sidebar {
+  width: 230px;
+  background: #e8f5e9; /* soft eco green */
+  padding: 25px 4px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  border-right: 2px solid #c8e6c9;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* Logo / App title */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #2e7d32; /* Dark eco green */
+  text-align: left;
+}
+
+/* Sidebar button style */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border: none;
+  background: transparent;
+  font-size: 1.05rem;
+  cursor: pointer;
+  border-radius: 8px;
+  color: #2e7d32;
+  width: 100%;
+  text-align: left;
+  transition: 0.2s ease;
+  font-weight: 500;
+}
+
+/* Hover effect */
+.menu:hover {
+  background: #c8e6c9;
+}
+
+/* Active page button */
+.menu.active {
+  background: #4caf50;
+  color: white;
+}
+
+/* Logout button */
+.logout {
+  margin-top: 210%;
+  padding: 10px;
+  background: #df5f5f;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 500;
+}
+
+.logout:hover {
+  background: #d32f2f;
+}

@@ -1,0 +1,14 @@
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* Content area beside sidebar */
+.content {
+  flex: 1;
+  margin-left: 230px; 
+  padding: 20px;
+  background: #f7fdf6;
+  overflow-y: auto;
+}
+

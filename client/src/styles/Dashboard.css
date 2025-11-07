@@ -1,0 +1,451 @@
+/* Layout */
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px 15px;
+}
+
+.title {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: -6px;
+}
+
+/* Avatar */
+.top-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #4CAF50;
+  object-fit: cover;
+}
+
+/* Body Layout */
+.dashboard-wrapper {
+  display: flex;
+  gap: 25px;
+}
+
+.left-block {
+  width: 35%;
+}
+
+.right-block {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Card Look */
+.section-card {
+  padding: 38px;
+  border-radius: 12px;
+}
+
+/* Rows */
+.report-row {
+  display: flex;
+  justify-content: space-between;
+  background: #f7f9fc;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* Badge */
+.pts-badge {
+  background: #16a34a;
+  padding: 6px 13px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Button */
+.view-map {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background: #1976d2;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.view-map:hover {
+  background: #145ea8;
+}
+/* 🔔 Notification Bell */
+.notif-container {
+  position: relative;
+}
+
+.bell-icon {
+  font-size: 24px;
+  cursor: pointer;
+  position: relative;
+  padding: 6px;
+  transition: 0.2s;
+}
+
+.bell-icon:hover {
+  transform: scale(1.1);
+}
+
+.notif-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: red;
+  color: white;
+  padding: 2px 6px;
+  font-size: 11px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* Dropdown */
+.notif-dropdown {
+  position: absolute;
+  right: 0;
+  top: 36px;
+  width: 240px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 12px;
+  z-index: 200;
+}
+
+.notif-dropdown h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.notif-item {
+  font-size: 14px;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+}
+.notif-item:last-child {
+  border: none;
+}
+
+/* 🗺️ Map Section Styling */
+.map-section {
+  margin-top: 15px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.map-toggle-btn {
+  background: #2e7d32;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.map-toggle-btn:hover {
+  background: #388e3c;
+  transform: scale(1.02);
+}
+
+.map-toggle-btn.active {
+  background: #d32f2f;
+}
+
+.map-wrapper {
+  overflow: hidden;
+  margin-top: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: #f5f5f5;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  max-height: 0;
+}
+
+.map-wrapper.open {
+  opacity: 1;
+  max-height: 400px;
+}
+
+.map-wrapper iframe,
+.map-wrapper canvas {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 12px;
+}
+
+/* 🗺️ Overlay Map Styles */
+.view-map-overlay-btn {
+  background-color: #2e7d32;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.view-map-overlay-btn:hover {
+  background-color: #388e3c;
+  transform: scale(1.02);
+}
+
+/* Overlay backdrop */
+.map-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Map content box */
+.map-overlay-content {
+  position: relative;
+  background: white;
+  width: 90%;
+  max-width: 1000px;
+  height: 80%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.4s ease;
+}
+
+/* Close button */
+.close-map-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.close-map-btn:hover {
+  background: #b71c1c;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* 🌍 Modern Glassmorphic Map Overlay */
+.map-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 25, 47, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeInOverlay 0.4s ease;
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 🪟 Map container box */
+.map-overlay-content {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  height: 80%;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: scaleIn 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 🧭 Map Header Bar */
+.map-overlay-content::before {
+  content: "🗺️ Garbage Locations Map";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45px;
+  line-height: 45px;
+  font-weight: 600;
+  color: #0d2b1d;
+  text-align: center;
+  background: linear-gradient(90deg, #a5d6a7, #66bb6a);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 🗺️ The Map should start below the header */
+.map-overlay-content .leaflet-container {
+  margin-top: 45px;
+  height: calc(100% - 45px);
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* ❌ Close Button */
+.close-map-btn {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  background: #d32f2f;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 3;
+  transition: 0.3s ease;
+}
+
+.close-map-btn:hover {
+  background: #b71c1c;
+  transform: scale(1.05);
+}
+
+/* 🖱️ View Map Button */
+.view-map-overlay-btn {
+  background: #2e7d32;
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.view-map-overlay-btn:hover {
+  background: #1b5e20;
+  transform: translateY(-2px);
+}
+.map-overlay-content {
+  animation: scaleIn 0.4s ease, pulseGlow 5s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(76, 175, 80, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(76, 175, 80, 0.5);
+  }
+}
+/* 🔔 Notification Bell */
+.top-actions {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+}
+
+.notif-bell {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.notif-bell:hover {
+  color: #388e3c;
+  transform: scale(1.15);
+}
+
+/* 📩 Notification Popup (same-page overlay) */
+.notif-popup {
+  position: absolute;
+  top: 70px;
+  right: 40px;
+  background: white;
+  width: 320px;
+  max-height: 420px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 999;
+  overflow-y: auto;
+  animation: fadeSlideIn 0.3s ease;
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+/* Animation for Notification Popup */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
