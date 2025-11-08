@@ -24,5 +24,8 @@ const upload = multer({ storage });
 router.post("/report", upload.single("image"), reportGarbage);
 router.get("/my-reports", authMiddleware, getUserReports);
 router.put("/mark-picked/:reportId", markAsPicked); // ✅ Added
+router.get('/', (req, res) => {
+  res.json({ message: 'Garbage route working ✅' });
+});
 
 module.exports = router;
