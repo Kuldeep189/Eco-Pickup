@@ -34,20 +34,27 @@ const reportGarbage = async (req, res) => {
       createdAt: new Date(),
     });
 
+
     // 🟢 Give +5 points for reporting
-    await User.findByIdAndUpdate(userId, { $inc: { points: 5 } });
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { $inc: { points: 5 } },
+      { new: true } // <-- return updated user
+    ).select("-password");
 
     console.log("✅ Report saved successfully:", report);
 
     res.status(201).json({
       message: "✅ Garbage reported successfully (+5 pts)",
       report,
+      updatedPoints: updatedUser.points, // 🔥 send new points
     });
   } catch (err) {
     console.error("❌ Error creating report:", err);
     res.status(500).json({ error: "Server error" });
   }
 };
+
 
 // 🟣 Get all reports of a user
 const getUserReports = async (req, res) => {
@@ -90,10 +97,28 @@ const markAsPicked = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+// 🕒 Get recent reports (for ProfileCard preview only)
+const getRecentReports = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const reports = await GarbageReport.find({ userId })
+      .sort({ createdAt: -1 })   // latest first
+      .limit(3)                  // preview only
+      .select("location status createdAt");
+
+    res.json(reports);
+  } catch (err) {
+    console.error("❌ Error fetching recent reports:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+
 
 // ✅ Export all properly
 module.exports = {
   reportGarbage,
   getUserReports,
   markAsPicked,
+  getRecentReports,
 };

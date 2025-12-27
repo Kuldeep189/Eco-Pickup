@@ -1,22 +1,29 @@
 import React from "react";
+import "../styles/ProfileCard.css";
 
 const ProfileCard = ({ user, fullWidth = false }) => {
   if (!user) {
     return (
-      <div style={styles.card(fullWidth)}>
-        <h2 style={styles.header}>Your Profile</h2>
+      <div style={{ ...styles.card(fullWidth), animation: "fadeIn 0.5s ease" }}>
+        <h2>Your Profile</h2>
         <p>Loading...</p>
       </div>
     );
   }
 
+  // ✅ SAFE DEFAULT
+  const recentReports = user.recentReports || [];
+
   return (
-    <div style={styles.card(fullWidth)}>
+    <div className="profile-card" style={styles.card(fullWidth)}>
       {/* 👤 Profile Header */}
       <div style={styles.headerBox}>
         <img
-          src={user.avatar || "https://via.placeholder.com/100"}
-          alt="Profile"
+          src={
+            user.avatar ||
+            "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+          }
+          alt="User Profile"
           style={styles.avatar}
         />
         <div>
@@ -33,18 +40,11 @@ const ProfileCard = ({ user, fullWidth = false }) => {
         <p><strong>Phone:</strong> {user.phone || "N/A"}</p>
       </div>
 
-      {/* 🌱 Points Section */}
+      {/* 🌱 Points */}
       <div style={styles.pointsBox}>
         <h3 style={styles.pointsTitle}>🌱 Eco Points</h3>
         <div style={styles.pointsValueContainer}>
-          <span
-            style={{
-              ...styles.pointsValue,
-              transition: "all 0.3s ease",
-            }}
-          >
-            {user.points || 0}
-          </span>
+          <span style={styles.pointsValue}>{user.points || 0}</span>
           <span style={styles.pointsLabel}>pts</span>
         </div>
         <p style={styles.pointsInfo}>
@@ -56,25 +56,59 @@ const ProfileCard = ({ user, fullWidth = false }) => {
       <h4 style={styles.subTitle}>Activity Summary</h4>
       <div style={styles.statsGrid}>
         <div style={styles.statBox}>
-          <span style={styles.statIcon}>🗑️</span>
+          <span>🗑️</span>
           <span style={styles.statText}>Reports</span>
           <strong>{user.reportsCount || 0}</strong>
         </div>
         <div style={styles.statBox}>
-          <span style={styles.statIcon}>📍</span>
+          <span>📍</span>
           <span style={styles.statText}>Locations</span>
           <strong>{user.locationsUpdated || 0}</strong>
         </div>
         <div style={styles.statBox}>
-          <span style={styles.statIcon}>✅</span>
+          <span>✅</span>
           <span style={styles.statText}>Approved</span>
           <strong>{user.reportsApproved || 0}</strong>
         </div>
         <div style={styles.statBox}>
-          <span style={styles.statIcon}>🚛</span>
+          <span>🚛</span>
           <span style={styles.statText}>Pickups</span>
           <strong>{user.pickupsCompleted || 0}</strong>
         </div>
+      </div>
+
+      {/* 🕒 Recent Reports */}
+      <h4 style={styles.subTitle}>Recent Reports</h4>
+
+      <div style={styles.recentList}>
+        {recentReports.length > 0 ? (
+          recentReports.slice(0, 3).map((r, i) => (
+            <div key={i} style={styles.recentItem}>
+              <span style={styles.recentLocation}>
+                📍 {r.location}
+              </span>
+              <span
+                style={{
+                  ...styles.recentStatus,
+                  color:
+                    r.status === "Picked"
+                      ? "#2e7d32"
+                      : r.status === "In Progress"
+                      ? "#0277bd"
+                      : "#f57c00",
+                }}
+              >
+                {r.status === "Picked"
+                  ? "✅ Picked"
+                  : r.status === "In Progress"
+                  ? "🚛 In Progress"
+                  : "⏳ Pending"}
+              </span>
+            </div>
+          ))
+        ) : (
+          <p style={styles.emptyText}>No recent reports yet 🌱</p>
+        )}
       </div>
     </div>
   );
@@ -87,9 +121,7 @@ const styles = {
     padding: "24px 28px",
     boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
     width: fullWidth ? "90%" : "350px",
-    maxWidth: fullWidth ? "800px" : "auto",
     margin: "0 auto",
-    transition: "all 0.3s ease",
   }),
 
   headerBox: {
@@ -108,20 +140,18 @@ const styles = {
   },
 
   name: {
-    margin: "0",
+    margin: 0,
     fontSize: "1.4rem",
-    fontWeight: "600",
+    fontWeight: 600,
     color: "#2e7d32",
   },
 
   role: {
-    margin: "2px 0 0 0",
     fontSize: "0.9rem",
     color: "#666",
   },
 
   divider: {
-    border: "none",
     borderBottom: "1px solid #eee",
     margin: "15px 0",
   },
@@ -129,43 +159,32 @@ const styles = {
   infoBox: {
     fontSize: "0.9rem",
     color: "#444",
-    lineHeight: "1.6",
-    marginBottom: "16px",
+    marginBottom: 16,
   },
 
   pointsBox: {
-    background: "linear-gradient(135deg, #e7fbe9, #f2fff5)",
+    background: "#f2fff5",
     borderRadius: 12,
-    padding: "16px 12px",
+    padding: 16,
     textAlign: "center",
-    boxShadow: "0 2px 6px rgba(0,0,0,0.05)",
-    marginBottom: "20px",
+    marginBottom: 20,
   },
 
-  pointsTitle: {
-    margin: 0,
-    color: "#2e7d32",
-    fontWeight: "600",
-  },
+  pointsTitle: { color: "#2e7d32" },
 
   pointsValueContainer: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "baseline",
     gap: 6,
-    margin: "6px 0",
   },
 
   pointsValue: {
     fontSize: "2rem",
-    fontWeight: "700",
+    fontWeight: 700,
     color: "#1b5e20",
   },
 
-  pointsLabel: {
-    fontSize: "1rem",
-    color: "#4caf50",
-  },
+  pointsLabel: { color: "#4caf50" },
 
   pointsInfo: {
     fontSize: "0.8rem",
@@ -174,34 +193,57 @@ const styles = {
 
   subTitle: {
     fontSize: "1rem",
-    fontWeight: "600",
+    fontWeight: 600,
     color: "#2e7d32",
-    margin: "10px 0",
+    margin: "12px 0",
   },
 
   statsGrid: {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
-    gap: "10px",
+    gap: 10,
   },
 
   statBox: {
     background: "#f8fdf9",
     border: "1px solid #e0f2e9",
     borderRadius: 10,
-    padding: "10px 12px",
+    padding: 10,
     textAlign: "center",
-    boxShadow: "0 1px 4px rgba(0,0,0,0.03)",
-  },
-
-  statIcon: {
-    fontSize: "1.2rem",
   },
 
   statText: {
-    display: "block",
     fontSize: "0.8rem",
     color: "#555",
+  },
+
+  recentList: {
+    fontSize: "0.85rem",
+    marginTop: 4,
+  },
+
+  recentItem: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "6px 0",
+    borderBottom: "1px dashed #e0f2e9",
+  },
+
+  recentLocation: {
+    maxWidth: "65%",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
+
+  recentStatus: {
+    fontSize: "0.8rem",
+    fontWeight: 500,
+  },
+
+  emptyText: {
+    fontSize: "0.8rem",
+    color: "#777",
   },
 };
 

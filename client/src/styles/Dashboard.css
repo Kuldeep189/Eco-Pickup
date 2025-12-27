@@ -1,4 +1,42 @@
 /* Layout */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: #f4f8f5;
+  color: #2e7d32;
+  overflow-x: hidden;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #a5d6a7;
+  border-radius: 10px;
+}
+
+
 .dashboard-top {
   display: flex;
   justify-content: space-between;
@@ -448,4 +486,92 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+/* ================= NOTIFICATIONS ================= */
+.notif-wrapper {
+  position: relative;
+}
+
+.notif-bell {
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+  position: relative;
+}
+
+.notif-bell.active {
+  animation: bellPulse 1.5s infinite;
+}
+
+@keyframes bellPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.notif-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #d32f2f;
+  color: white;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: 600;
+}
+
+.notif-panel {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  width: 320px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  z-index: 200;
+  animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.notif-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+}
+
+.notif-header button {
+  background: none;
+  border: none;
+  color: #2e7d32;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.notif-item {
+  padding: 12px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.notif-item.unread {
+  background: #f1f8e9;
+  font-weight: 600;
+}
+
+.notif-item.read {
+  color: #666;
+}
+
+.notif-empty {
+  padding: 20px;
+  text-align: center;
+  color: #777;
 }

@@ -1,0 +1,85 @@
+.leaderboard-page {
+  padding: 40px;
+  text-align: center;
+}
+
+.leaderboard-page h2 {
+  color: #2e7d32;
+  font-size: 1.8rem;
+}
+
+.leaderboard-container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.leader-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  padding: 12px 16px;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.leader-card:hover {
+  transform: translateY(-3px);
+}
+
+.rank {
+  font-weight: 700;
+  color: #1b5e20;
+  font-size: 1.2rem;
+  width: 30px;
+}
+
+.leader-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4caf50;
+}
+
+.leader-info {
+  flex: 1;
+  text-align: left;
+  margin-left: 12px;
+}
+
+.leader-info h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #2e7d32;
+}
+
+.leader-info p {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.leader-points {
+  font-weight: 700;
+  color: #1b5e20;
+}
+
+.current-user {
+  background: linear-gradient(135deg, #e7fbe9, #f1fff5);
+  border-left: 4px solid #4caf50;
+}
+.eco-level-badge {
+  font-size: 0.75rem;
+  color: #2e7d32;
+  background: #e6f5e6;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 4px;
+  font-weight: 600;
+}

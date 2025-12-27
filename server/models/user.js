@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
   points: {
     type: Number,
     default: 0, // 🟢 Added for Eco Points
-  },
+  }
 });
 
 module.exports = mongoose.model('User', userSchema);

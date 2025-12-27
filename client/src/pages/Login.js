@@ -23,7 +23,7 @@ function Login() {
     setIsError(false);
 
     try {
-      const res = await axios.post(
+                  const res = await axios.post(
         "http://localhost:5000/api/auth/login",
         formData
       );
@@ -38,7 +38,6 @@ function Login() {
       setIsError(true);
     }
   };
-
   return (
     <div className="glass-form">
       <h2 className="glass-title">Welcome Back 👋</h2>
@@ -70,7 +69,9 @@ function Login() {
           required
         />
 
-        <button type="submit" className="glass-btn">Login</button>
+        <button type="submit" className="glass-btn">
+          Login
+        </button>
       </form>
     </div>
   );

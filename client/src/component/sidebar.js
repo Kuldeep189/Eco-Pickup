@@ -10,6 +10,8 @@ export default function Sidebar({ active }) {
     { label: "Profile", icon: "👤", path: "/profile", key: "profile" },
     { label: "Report Garbage", icon: "🗑️", path: "/report", key: "report" },
     { label: "Map", icon: "🗺️", path: "/map", key: "map" },
+    { label: "Leaderboard", icon: "🏁", path: "/leaderboard", key: "leaderboard" },
+    { label: "Rewards Center", icon: "🎁" , path: "/reward", key: "reward" },
   ];
 
   return (

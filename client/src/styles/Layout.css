@@ -1,14 +1,18 @@
 .layout {
   display: flex;
   height: 100vh;
+  background: #ffffff;
 }
 
-/* Content area beside sidebar */
+.sidebar {
+  width: 250px;
+  background: #ffffff;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.05);
+}
+
 .content {
   flex: 1;
-  margin-left: 230px; 
-  padding: 20px;
-  background: #f7fdf6;
+  background: #ffffff;
+  padding: 30px 40px;
   overflow-y: auto;
 }
-

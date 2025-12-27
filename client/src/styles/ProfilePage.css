@@ -1,0 +1,383 @@
+.profile-page {
+  padding: 30px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
+.profile-header {
+  background: linear-gradient(90deg, #4caf50, #81c784);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.profile-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.profile-header p {
+  margin-top: 4px;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.profile-avatar-lg {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid white;
+  object-fit: cover;
+}
+
+/* PROFILE INFO CARD */
+.profile-content {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.profile-card {
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  min-width: 300px;
+}
+
+.profile-card h2 {
+  margin-bottom: 15px;
+  color: #2e7d32;
+  font-size: 1.2rem;
+}
+
+.profile-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.profile-info-grid strong {
+  color: #1b5e20;
+  font-size: 0.9rem;
+}
+
+.profile-info-grid p {
+  font-size: 0.95rem;
+  color: #333;
+  margin-top: 3px;
+}
+
+/* POINTS CARD */
+.points-card {
+  flex: 0.5;
+  background: linear-gradient(135deg, #e8f5e9, #f1fff4);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  text-align: center;
+  min-width: 250px;
+}
+
+.points-card h3 {
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.points-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1b5e20;
+  margin-bottom: 5px;
+}
+
+.points-note {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* ACTIVITY GRID */
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.activity-box {
+  background: white;
+  border-radius: 10px;
+  padding: 15px 10px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.activity-box h4 {
+  color: #2e7d32;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.activity-box p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1b5e20;
+}
+
+/* LOADING / ERROR */
+.profile-loader,
+.profile-error {
+  text-align: center;
+  color: #666;
+  margin-top: 120px;
+  font-size: 1.2rem;
+}
+
+.profile-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-btn {
+  background: #4caf50;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+  background: #43a047;
+}
+
+/* MODAL STYLES */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal h3 {
+  color: #2e7d32;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.edit-form label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.edit-form input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #c8e6c9;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.save-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.cancel-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+.breakdown-btn {
+  margin-top: 10px;
+  background: #2e7d32;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.breakdown-btn:hover {
+  background: #1b5e20;
+}
+
+/* Points Breakdown Modal */
+.breakdown-list {
+  margin-top: 15px;
+}
+
+.breakdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fdf9;
+  border: 1px solid #e0f2e9;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.breakdown-text {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.breakdown-points {
+  font-weight: 700;
+  color: #1b5e20;
+}
+
+.breakdown-total {
+  text-align: right;
+  font-size: 1rem;
+  color: #2e7d32;
+  margin-top: 10px;
+  font-weight: 700;
+}
+.modal-wide {
+  width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.breakdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.breakdown-table th {
+  background: #4caf50;
+  color: white;
+  text-align: left;
+  padding: 10px;
+}
+
+.breakdown-table td {
+  padding: 10px;
+  border-bottom: 1px solid #e0f2e9;
+  font-size: 0.95rem;
+}
+
+.breakdown-table tr:hover {
+  background: #f9fff9;
+}
+
+.breakdown-total {
+  text-align: right;
+  margin-top: 10px;
+  color: #2e7d32;
+  font-weight: 700;
+}
+.eco-level-card {
+  background: linear-gradient(135deg, #e8f5e9, #f1fff4);
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.eco-level-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1b5e20;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 14px;
+  background: #c8e6c9;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto 8px;
+  width: 80%;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #4caf50;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #2e7d32;
+}
+.map-btn {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.map-btn:hover {
+  background: #2e7d32;
+}
+
+.modal-map {
+  width: 500px;
+  max-width: 90%;
+}
+
+.leaflet-container {
+  width: 100%;
+  border-radius: 10px;
+}
+

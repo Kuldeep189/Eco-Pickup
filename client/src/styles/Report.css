@@ -10,6 +10,23 @@
   margin-bottom: 5px;
 }
 
+.inline-input {
+  display: flex;
+  gap: 8px;
+}
+
+.inline-input input {
+  flex: 1;
+}
+
+.search-map-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
 .report-subtitle {
   color: #666;
   font-size: 0.95rem;
