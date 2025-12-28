@@ -3,11 +3,14 @@ import MainLayout from "./MainLayout";
 import axios from "axios";
 import "../styles/leaderboard.css";
 
+const API_URL = "http://localhost:5000";
+console.log("API_URL =", API_URL);
+
 export default function Leaderboard() {
   const [leaders, setLeaders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-  // Calculate Eco Level from points
+
   const getEcoLevel = (pts) => {
     if (pts < 50) return { title: "Eco Rookie 🌱", level: 1 };
     if (pts < 100) return { title: "Green Guardian 🍃", level: 2 };
@@ -17,13 +20,12 @@ export default function Leaderboard() {
   };
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    setUser(storedUser);
+    setUser(JSON.parse(localStorage.getItem("user")));
 
     const fetchLeaderboard = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/leaderboard");
-        setLeaders(res.data);
+        const res = await axios.get(`${API_URL}/api/leaderboard`);
+        setLeaders(res.data || []);
       } catch (err) {
         console.error("Leaderboard fetch error:", err);
       } finally {
@@ -44,26 +46,17 @@ export default function Leaderboard() {
     );
   }
 
-  const getMedal = (rank) => {
-    if (rank === 1) return "🥇";
-    if (rank === 2) return "🥈";
-    if (rank === 3) return "🥉";
-    return rank;
-  };
+  const getMedal = (rank) =>
+    rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : rank;
 
-  const getRankClass = (rank) => {
-    if (rank === 1) return "rank-gold";
-    if (rank === 2) return "rank-silver";
-    if (rank === 3) return "rank-bronze";
-    return "rank-normal";
-  };
-const getLevelProgress = (points) => {
-  if (points < 50) return { level: 1, next: 50, title: "Eco Rookie 🌱" };
-  if (points < 100) return { level: 2, next: 100, title: "Green Guardian 🍃" };
-  if (points < 200) return { level: 3, next: 200, title: "Eco Hero 🌍" };
-  if (points < 500) return { level: 4, next: 500, title: "Planet Protector 🌏" };
-  return { level: 5, next: null, title: "Legendary Recycler ♻️" };
-};
+  const getRankClass = (rank) =>
+    rank === 1
+      ? "rank-gold"
+      : rank === 2
+      ? "rank-silver"
+      : rank === 3
+      ? "rank-bronze"
+      : "rank-normal";
 
   return (
     <MainLayout active="leaderboard">
@@ -72,13 +65,17 @@ const getLevelProgress = (points) => {
         <p>See how you rank among the EcoHeroes worldwide 🌿</p>
 
         <div className="leaderboard-container">
+          {leaders.length === 0 && (
+            <p style={{ color: "#888" }}>No leaderboard data yet 🚧</p>
+          )}
+
           {leaders.map((u, i) => {
             const rank = i + 1;
             const isCurrentUser = user?._id === u._id;
 
             return (
               <div
-                key={i}
+                key={u._id}
                 className={`leader-card ${isCurrentUser ? "current-user" : ""}`}
               >
                 <div className={`rank ${getRankClass(rank)}`}>
@@ -88,7 +85,7 @@ const getLevelProgress = (points) => {
                 <img
                   src={
                     u.avatar
-                      ? `http://localhost:5000/${u.avatar}`
+                      ? `${API_URL}/${u.avatar}`
                       : "https://cdn-icons-png.flaticon.com/512/149/149071.png"
                   }
                   alt="User Avatar"
@@ -97,12 +94,10 @@ const getLevelProgress = (points) => {
 
                 <div className="leader-info">
                   <h4>{u.fullName}</h4>
-
                   <p className="eco-level-badge">
                     {getEcoLevel(u.points).title}
                   </p>
                 </div>
-                    
 
                 <div className="leader-points">
                   <strong>{u.points}</strong> pts

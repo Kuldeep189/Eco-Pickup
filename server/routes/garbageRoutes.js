@@ -26,11 +26,6 @@ const upload = multer({ storage });
 // 🟢 Routes
 router.post("/report", upload.single("image"), reportGarbage);
 router.get("/my-reports", authMiddleware, getUserReports);
-<<<<<<< HEAD
-router.put("/mark-picked/:reportId", markAsPicked); // ✅ Added
-router.get('/', (req, res) => {
-  res.json({ message: 'Garbage route working ✅' });
-=======
 router.put("/mark-picked/:reportId", markAsPicked); 
 router.get("/recent", authMiddleware, getRecentReports);
 router.post("/report", authMiddleware, async (req, res) => {
@@ -61,7 +56,6 @@ router.post("/report", authMiddleware, async (req, res) => {
     console.error("Garbage report error:", err);
     res.status(500).json({ message: "Server error" });
   }
->>>>>>> d116f54 (Cleaned repo: removed node_modules and uploads, added core features)
 });
 
 module.exports = router;
