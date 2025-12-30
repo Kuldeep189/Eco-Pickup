@@ -143,6 +143,15 @@ export default function RewardCenter() {
           </div>
         ))}
       </div>
+      {/* 🌿 Points Stats (Top Right) */}
+      <div className="points-stats">
+        <span className="points-icon">🌿</span>
+        <div className="points-info">
+          <p className="points-label">Eco Points</p>
+          <p className="points-value">{points}</p>
+        </div>
+      </div>
+
       {popup.show && (
         <div className="popup-overlay">
           <div className="popup-box">

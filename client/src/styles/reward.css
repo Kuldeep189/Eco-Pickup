@@ -221,3 +221,39 @@
   from { transform: translateY(-20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+/* 🌿 Points Stats Card */
+.points-stats {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #e8f5e9;
+  padding: 10px 16px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  z-index: 10;
+}
+
+.points-icon {
+  font-size: 28px;
+}
+
+.points-info {
+  text-align: left;
+}
+
+.points-label {
+  font-size: 0.8rem;
+  color: #388e3c;
+  margin: 0;
+  font-weight: 600;
+}
+
+.points-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1b5e20;
+  margin: 0;
+}

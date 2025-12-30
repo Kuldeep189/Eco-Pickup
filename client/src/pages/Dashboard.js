@@ -15,32 +15,39 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-  const token = localStorage.getItem("token");
-  if (!token) return;
+    const token = localStorage.getItem("token");
+    if (!token)
 
-  fetch("http://localhost:5000/api/garbage/recent", {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      setRecentReports(data);
+      return;
+
+    fetch("http://localhost:5000/api/garbage/recent", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
     })
-    .catch((err) => console.error("Recent reports fetch error:", err));
-}, []);
+      .then((res) => res.json())
+      .then((data) => {
+        setRecentReports(data);
+      })
+      .catch((err) => console.error("Recent reports fetch error:", err));
+  }, []);
 
 
   useEffect(() => {
     const u = localStorage.getItem("user");
     if (u) setUser(JSON.parse(u));
-    
+
     setRecentReports([
       { id: 1, location: "Sector 21", status: "✅ Picked", points: 10 },
       { id: 2, location: "Bus Stand", status: "🕒 Pending", points: 0 },
       { id: 3, location: "Park Street", status: "🚛 In Progress", points: 5 },
     ]);
   }, []);
+  const stats = {
+    completedPickups: recentReports.filter(r => r.isPicked === true).length,
+    pendingRequests: recentReports.filter(r => r.status === "Pending").length,
+    totalReports: recentReports.length,
+  };
 
   return (
     <MainLayout active="dashboard">
@@ -72,7 +79,6 @@ export default function Dashboard() {
               <div key={r.id} className="report-row">
                 <span>📍 {r.location}</span>
                 <span>{r.status}</span>
-                <span className="pts-badge">+{r.points}</span>
               </div>
             ))}
 
@@ -85,7 +91,8 @@ export default function Dashboard() {
           </div>
 
           <div className="section-card">
-            <StatsPanel />
+            <h3 className="section-title">Stats Summary</h3>
+            <StatsPanel stats={stats} />
           </div>
         </div>
       </div>

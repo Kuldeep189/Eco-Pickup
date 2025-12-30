@@ -1,0 +1,80 @@
+/* ================= STATS PANEL ================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+/* Card */
+.stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px 10px; /* ⬇ reduced padding */
+  text-align: center;
+  border: 1px solid #e3f2e9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* Value row */
+.stat-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 1.15rem; /* ⬇ reduced from 1.6 */
+  font-weight: 700;
+  color: #1b5e20;
+}
+
+/* Icon */
+.stat-icon {
+  font-size: 1.1rem; /* ⬇ smaller icon */
+}
+
+/* Label */
+.stat-label {
+  margin-top: 4px;
+  font-size: 0.75rem; /* ⬇ smaller label */
+  color: #555;
+  letter-spacing: 0.2px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Mobile */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-value {
+    font-size: 1.05rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 10px;
+  }
+
+  .stat-value {
+    font-size: 1rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+  }
+}

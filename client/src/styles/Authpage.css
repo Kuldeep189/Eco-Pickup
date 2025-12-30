@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
 
-  background: url("https://images.unsplash.com/photo-1521791136064-7986c2920216?blur=50")
+  background: url("backg.png")
     center/cover no-repeat;
   backdrop-filter: blur(8px);
 }

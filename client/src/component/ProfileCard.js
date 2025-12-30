@@ -56,60 +56,23 @@ const ProfileCard = ({ user, fullWidth = false }) => {
       <h4 style={styles.subTitle}>Activity Summary</h4>
       <div style={styles.statsGrid}>
         <div style={styles.statBox}>
-          <span>🗑️</span>
           <span style={styles.statText}>Reports</span>
           <strong>{user.reportsCount || 0}</strong>
         </div>
         <div style={styles.statBox}>
-          <span>📍</span>
           <span style={styles.statText}>Locations</span>
           <strong>{user.locationsUpdated || 0}</strong>
         </div>
         <div style={styles.statBox}>
-          <span>✅</span>
           <span style={styles.statText}>Approved</span>
           <strong>{user.reportsApproved || 0}</strong>
         </div>
         <div style={styles.statBox}>
-          <span>🚛</span>
           <span style={styles.statText}>Pickups</span>
           <strong>{user.pickupsCompleted || 0}</strong>
         </div>
       </div>
 
-      {/* 🕒 Recent Reports */}
-      <h4 style={styles.subTitle}>Recent Reports</h4>
-
-      <div style={styles.recentList}>
-        {recentReports.length > 0 ? (
-          recentReports.slice(0, 3).map((r, i) => (
-            <div key={i} style={styles.recentItem}>
-              <span style={styles.recentLocation}>
-                📍 {r.location}
-              </span>
-              <span
-                style={{
-                  ...styles.recentStatus,
-                  color:
-                    r.status === "Picked"
-                      ? "#2e7d32"
-                      : r.status === "In Progress"
-                      ? "#0277bd"
-                      : "#f57c00",
-                }}
-              >
-                {r.status === "Picked"
-                  ? "✅ Picked"
-                  : r.status === "In Progress"
-                  ? "🚛 In Progress"
-                  : "⏳ Pending"}
-              </span>
-            </div>
-          ))
-        ) : (
-          <p style={styles.emptyText}>No recent reports yet 🌱</p>
-        )}
-      </div>
     </div>
   );
 };
@@ -135,7 +98,6 @@ const styles = {
     width: 80,
     height: 80,
     borderRadius: "50%",
-    border: "3px solid #4CAF50",
     objectFit: "cover",
   },
 
