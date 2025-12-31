@@ -3,7 +3,6 @@ import MainLayout from "../component/MainLayout";
 import axios from "axios";
 import "../styles/ProfilePage.css";
 
-// Firebase imports left as they were
 import { auth } from "../firebaseconfig";
 import {
   updateEmail,
@@ -26,11 +25,9 @@ const ProfilePage = () => {
     currentPassword: "",
   });
 
-  // ------ point rules (single source of truth) ------
   const POINTS_PENDING = 5;
   const POINTS_PICKED = 10;
 
-  // 🔢 determine level based on points
   const getEcoLevel = (pts) => {
     if (pts < 50) return { level: 1, title: "Eco Rookie 🌱", next: 50 };
     if (pts < 100) return { level: 2, title: "Green Guardian 🍃", next: 100 };
@@ -101,8 +98,6 @@ const ProfilePage = () => {
         setUser(profile);
       }
 
-      // set reports and compute points
-  // ✅ Use backend user points directly
 setReports(myReports);
 
 if (profile?.points !== undefined) {
@@ -308,8 +303,6 @@ setUser(updatedUser);
             </div>
           </div>
         )}
-
-        {/* Points & Report Breakdown Modal */}
         {showPointsModal && (
           <div className="modal-overlay">
             <div className="modal modal-wide">

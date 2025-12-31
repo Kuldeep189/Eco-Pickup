@@ -6,10 +6,8 @@ function Notifications() {
   const [notifications, setNotifications] = useState([]);
   const ref = useRef(null);
 
-  // ✅ Get logged-in user
   const user = JSON.parse(localStorage.getItem("user"));
 
-  // ✅ Create socket WITH auth (THIS IS THE KEY FIX)
   const socketRef = useRef(null);
 
   useEffect(() => {
@@ -21,7 +19,6 @@ function Notifications() {
       }
     });
 
-    // 🔔 Listen for notifications
     socketRef.current.on("notification", (data) => {
       setNotifications(prev => [data, ...prev]);
     });
@@ -33,7 +30,6 @@ function Notifications() {
 
   const unreadCount = notifications.filter(n => !n.read).length;
 
-  // ❌ Close on outside click
   useEffect(() => {
     const handler = (e) => {
       if (ref.current && !ref.current.contains(e.target)) {

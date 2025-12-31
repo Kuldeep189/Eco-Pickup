@@ -110,7 +110,6 @@ export default function RewardCenter() {
                           return;
                         }
 
-                        // 🌱 ECO REWARD (plant donation, eco badge)
                         if (r.category === "Eco Rewards") {
                           setPopup({
                             show: true,
@@ -121,7 +120,6 @@ export default function RewardCenter() {
                           return;
                         }
 
-                        // 🛍 BRAND COUPON
                         if (r.category === "Brand Coupons" || r.category === "Discount Offers") {
                           setPopup({
                             show: true,
@@ -143,7 +141,6 @@ export default function RewardCenter() {
           </div>
         ))}
       </div>
-      {/* 🌿 Points Stats (Top Right) */}
       <div className="points-stats">
         <span className="points-icon">🌿</span>
         <div className="points-info">
@@ -172,7 +169,6 @@ export default function RewardCenter() {
         <div className="popup-overlay">
           <div className="popup-box">
 
-            {/* Different icons based on popup type */}
             <div className="popup-icon">
               {popup.type === "eco" && "🌱"}
               {popup.type === "brand" && "📩"}

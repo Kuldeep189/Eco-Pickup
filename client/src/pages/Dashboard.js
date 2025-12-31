@@ -52,20 +52,17 @@ export default function Dashboard() {
   return (
     <MainLayout active="dashboard">
 
-      {/* 🔝 Top Header */}
       <div className="dashboard-top">
         <div>
           <h2 className="title">👋 Hello, {user?.fullName || "User"}</h2>
           <p className="subtitle">Let’s keep the city clean together 🌱</p>
         </div>
 
-        {/* 🔔 Notifications */}
         <div className="top-actions">
           <Notifications />
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="dashboard-wrapper">
         <div className="left-block">
           <ProfileCard user={user} />
@@ -97,7 +94,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* 🌍 Map Overlay */}
       {showMap && (
         <div className="map-overlay">
           <div className="map-overlay-content">

@@ -40,7 +40,7 @@ export default function Leaderboard() {
     return (
       <MainLayout active="leaderboard">
         <div className="leaderboard-page">
-          <p>⏳ Loading leaderboard...</p>
+          <p>Loading leaderboard...</p>
         </div>
       </MainLayout>
     );

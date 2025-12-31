@@ -8,14 +8,10 @@ export default function MainLayout({ children, active }) {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
-    // 🚫 Redirect to login if not authenticated
     if (!token) {
       navigate("/auth");
       return;
     }
-
-    // 🧠 Fetch the latest user profile (ensures points are up-to-date)
     const fetchProfile = async () => {
       try {
         const res = await fetch("http://localhost:5000/api/auth/profile", {

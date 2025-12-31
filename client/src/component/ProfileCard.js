@@ -10,13 +10,10 @@ const ProfileCard = ({ user, fullWidth = false }) => {
       </div>
     );
   }
-
-  // ✅ SAFE DEFAULT
   const recentReports = user.recentReports || [];
 
   return (
     <div className="profile-card" style={styles.card(fullWidth)}>
-      {/* 👤 Profile Header */}
       <div style={styles.headerBox}>
         <img
           src={
@@ -34,13 +31,11 @@ const ProfileCard = ({ user, fullWidth = false }) => {
 
       <hr style={styles.divider} />
 
-      {/* 📧 Contact Info */}
       <div style={styles.infoBox}>
         <p><strong>Email:</strong> {user.email}</p>
         <p><strong>Phone:</strong> {user.phone || "N/A"}</p>
       </div>
 
-      {/* 🌱 Points */}
       <div style={styles.pointsBox}>
         <h3 style={styles.pointsTitle}>🌱 Eco Points</h3>
         <div style={styles.pointsValueContainer}>
@@ -52,7 +47,6 @@ const ProfileCard = ({ user, fullWidth = false }) => {
         </p>
       </div>
 
-      {/* 📊 Activity Summary */}
       <h4 style={styles.subTitle}>Activity Summary</h4>
       <div style={styles.statsGrid}>
         <div style={styles.statBox}>

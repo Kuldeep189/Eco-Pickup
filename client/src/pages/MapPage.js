@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../component/sidebar"; // ✅ Use same reusable sidebar
+import Sidebar from "../component/sidebar"; 
 import GarbageMap from "../component/GarbageMap";
 import "../styles/MapPage.css";
 

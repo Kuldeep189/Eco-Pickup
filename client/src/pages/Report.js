@@ -44,7 +44,7 @@ export default function Report() {
     lng: null,
   });
   
-  const [mapType, setMapType] = useState("street"); // "street" | "sat"
+  const [mapType, setMapType] = useState("street"); 
   const [preview, setPreview] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [useCamera, setUseCamera] = useState(false);
@@ -52,7 +52,7 @@ export default function Report() {
   const canvasRef = useRef(null);
 
   const [currentPosition, setCurrentPosition] = useState(null);
-  const mapRef = useRef(null); // 👉 to control map (setView)
+  const mapRef = useRef(null); 
 
   // Get user’s current GPS
   useEffect(() => {
@@ -125,7 +125,6 @@ export default function Report() {
     setUseCamera(false);
   };
 
-  // 👉 NEW: Search typed location/address and move map
   const handleSearchLocation = async () => {
     const query = (formData.location || formData.address || "").trim();
     if (!query) {
@@ -282,7 +281,6 @@ export default function Report() {
                 onChange={handleChange}
                 required
               />
-              {/* 👉 Button to search & move map */}
               <button
                 type="button"
                 className="search-map-btn"
@@ -353,7 +351,6 @@ export default function Report() {
                         }
                       />
 
-                      {/* 👉 This will recenter the map whenever markerPosition changes */}
                       <RecenterOnMarker position={markerPosition} />
                     </MapContainer>
                   );
@@ -370,7 +367,6 @@ export default function Report() {
             )}
           </div>
 
-          {/* 📸 Image Capture / Upload */}
           <div className="form-group">
             <label>Attach Photo:</label>
             {!useCamera ? (

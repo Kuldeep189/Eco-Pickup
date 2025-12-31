@@ -89,13 +89,10 @@ function Chatbot() {
         </button>
       )}
 
-      {/* Chat window */}
       {open && (
         <div className="chatbot-container">
-          {/* Header */}
           <div className="chatbot-header">
             <div className="chatbot-header-left">
-              {/* 👇 Bot icon “merged” into header */}
               <div className="chatbot-avatar">
                 🤖
               </div>
@@ -116,7 +113,6 @@ function Chatbot() {
             </button>
           </div>
 
-          {/* Messages */}
           <div className="chatbot-messages">
             {messages.map((m, i) => (
               <div
@@ -153,7 +149,6 @@ function Chatbot() {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Suggestions */}
           <div className="chatbot-suggestions">
             {SUGGESTIONS.map((text) => (
               <button
@@ -167,7 +162,6 @@ function Chatbot() {
             ))}
           </div>
 
-          {/* Input */}
           <div className="chatbot-input-area">
             <textarea
               rows={1}
